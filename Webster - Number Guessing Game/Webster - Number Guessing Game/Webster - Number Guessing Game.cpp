@@ -10,47 +10,58 @@ using namespace std;
 int main()
 {
 	// Attributes
-	int num, guess, tries = 0;
-	bool play = true;
+	int num, guess = 0;
+	int tries = 1;
+	char answer;
 
 	// Get the current time, cast to unsigned int and seed RNG
 	srand((unsigned int)time(0));
 
-	num = rand() % 100 + 1;
+	// Number in between 1-100
+	num = rand() % 99 + 2;
 
 	// Nested loops: one that loops while they still want to play, and
 	// another that loops while they're guessing
-	while (play) 
+	while (true)
 	{
-		do 
-		{
-			cout << "Enter your guess (1-100): ";
+		// Playing the Guessing Game
+		while (true)
+		{			
+			std::cout << "#" << tries << " Enter your guess (1-100): ";
+			std::cin >> guess;
+
+			if (guess < 1 || guess > 100) 
+			{
+				std::cout << "Error: " << guess << " is outside of the range 1-100\n\n";
+			}
+
+			else if (guess > num)
+			{
+				cout << "Your guess was too high.\n\n";
+				tries++;
+			}
+
+			else if (guess < num)
+			{
+				cout << "Your guess was too low.\n\n";
+				tries++;
+			}
+
+			else
+			{
+				cout << "Correct! It took you " << tries << " guesses.\n\n";
+				break;
+			}
 			
-			cin >> guess;
-			
-			tries++;
-
-			if (guess > num) 
+			if (tries > 8) 
 			{
-				cout << "Your guess was too high.\n";
+				std::cout << "You ran out of tries! The number was " << num << "\n\n";
+				break;
 			}
-
-			else if (guess < num) 
-			{
-				cout << "Your guess was too low.\n";
-			}
-
-			else 
-			{
-				cout << "Correct! It took you " << tries << " guesses.\n";
-			}
-		} while (guess != num);
-
-		cout << "Would you like to play again? (Y/N): ";
-
-		cin >> 
+		}
 	}
 
-    return 0;
+	std::cin.ignore();
+	return 0;
 }
 
