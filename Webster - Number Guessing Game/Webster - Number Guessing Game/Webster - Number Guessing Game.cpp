@@ -59,6 +59,38 @@ int main()
 				break;
 			}
 		}
+
+		// Check user's input and run again or exit;
+		while (true)
+		{
+			std::cout << "Would you like to play again (Y/N)? ";
+			std::cin >> answer;
+			std::cin.ignore();
+
+			if (answer == 'n' || answer == 'N' || answer == 'y' || answer == 'Y')
+			{
+				break;
+			}
+
+			else
+			{
+				std::cout << "Please enter \'Y\' or \'N\'...\n";
+			}
+		}
+
+		if (answer == 'n' || answer == 'N')
+		{
+			std::cout << "\nThanks for playing!";
+			break;
+		}
+
+		// New Random number and reset tries
+		else
+		{
+			num = rand() % 99 + 2;
+			tries = 1;
+			std::cout << "\n\n\n";
+		}
 	}
 
 	std::cin.ignore();
