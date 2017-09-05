@@ -1,5 +1,7 @@
 // Webster - Number Guessing Game.cpp : Defines the entry point for the console application.
-//
+// JaJuan Webster
+// Number Guessing Game
+// Steve Maier
 
 #include "stdafx.h"
 #include <time.h>
