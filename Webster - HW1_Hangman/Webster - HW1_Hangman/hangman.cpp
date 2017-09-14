@@ -102,4 +102,5 @@ void showGallows(int guessLimit)
 void showSolved(char word[], char guesses[])
 {
 	// TODO: store letters into proper char array
+
 }
