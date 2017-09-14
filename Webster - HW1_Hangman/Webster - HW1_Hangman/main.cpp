@@ -11,28 +11,23 @@ using namespace std;
 
 int main()
 {
-	string wordToBeGuessed = "RIDICULOUSNESS";
-	string correctlyGuessedLettters;
-	string incorrectlyGuessedLetters;
-	string letter;
-	char word[15] = "RIDICULOUSNESS";
-	char guesses[15];
-	cout << "----------------------Hello! Welcome to the HANGMAN game!----------  ----------" << endl;
+	char wordToBeGuessed[] = "clout";
+	char correctlyGuessedLettters[] = "_____";
+	char incorrectlyGuessedLetters[27] = "";
 
-	showGallows(15);
-	showSolved(word, guesses);
+	std::cout << "----------------------Welcome to the HANGMAN!----------  ----------" << endl;
 
-	cout << "Guess a letter: ";
-	cin >> letter;
+	//showGallows(15);
+	//showSolved(word, guesses);
 
+	std::cout << "Guess a letter: ";
+
+	/*
 	for (int i = 0; i < 15; i++)
 	{
-		if (letter == word[i])
-		{
 
-		}
 	}
+	*/
 
-    return 0;
+	return 0;
 }
-
