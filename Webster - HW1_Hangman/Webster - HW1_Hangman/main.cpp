@@ -4,7 +4,7 @@
 // Professor Maier
 
 #include "stdafx.h"
-#include "hangman.cpp"
+#include "hangman.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -16,11 +16,12 @@ int main()
 	char incorrectlyGuessedLetters[27] = "";
 
 	std::cout << "----------------------Welcome to the HANGMAN!----------  ----------" << endl;
+	std::cout << "Your word has FIVE letters." << endl;
 
-	//showGallows(15);
+	showGallows(strlen(incorrectlyGuessedLetters));
 	//showSolved(word, guesses);
 
-	std::cout << "Guess a letter: ";
+	std::cout << "\n\nGuess a letter: ";
 
 	/*
 	for (int i = 0; i < 15; i++)

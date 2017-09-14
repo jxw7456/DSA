@@ -11,6 +11,91 @@
 void showGallows(int guessLimit)
 {
 	// TODO: draw ASCII art properly if guess is wrong.
+	if (guessLimit == 0)
+	{
+		printf("______\n");
+		printf("|\n");
+		printf("|\n");
+		printf("|\n");
+		printf("|\n");
+		printf("|\n");
+	}
+
+	if (guessLimit == 1)
+	{
+		printf("______\n");
+		printf("|   |\n");
+		printf("|\n");
+		printf("|\n");
+		printf("|\n");
+		printf("|\n");
+		printf("|\n");
+	}
+
+	if (guessLimit == 2)
+	{
+		printf("________\n");
+		printf("|   |\n");
+		printf("|   O\n");
+		printf("|\n");
+		printf("|\n");
+		printf("|\n");
+	}
+
+	if (guessLimit == 3)
+	{
+		printf("________\n");
+		printf("|  |\n");
+		printf("|  O\n");
+		printf("|  |\n");
+		printf("|  |\n");
+		printf("|\n");
+		printf("|\n");
+	}
+
+	if (guessLimit == 4)
+	{
+		printf("________\n");
+		printf("|  |\n");
+		printf("|  O\n");
+		printf("| /|\n");
+		printf("|  |\n");
+		printf("|\n");
+		printf("|\n");
+	}
+
+	if (guessLimit == 5)
+	{
+		printf("________\n");
+		printf("|  |\n");
+		printf("|  O\n");
+		printf("| /|\\\n");
+		printf("|  |\n");
+		printf("|\n");
+		printf("|\n");
+	}
+
+	if (guessLimit == 6)
+	{
+		printf("________\n");
+		printf("|  |\n");
+		printf("|  O\n");
+		printf("| /|\\\n");
+		printf("|  |\n");
+		printf("| /\n");
+		printf("|\n");
+	}
+
+	if (guessLimit == 7)
+	{
+		printf("________\n");
+		printf("|  |\n");
+		printf("|  O\n");
+		printf("| /|\\\n");
+		printf("|  |\n");
+		printf("| / \\\n");
+		printf("|\n");
+	}
 }
 
 // store proper guess letters and show the user which letters have been correctly guessed
