@@ -14,7 +14,7 @@ int main()
 	// Attributes
 	char wordToBeGuessed[] = "clout";
 	char correctlyGuessedLettters[] = "_____";
-	char incorrectlyGuessedLetters[27] = "";
+	char incorrectlyGuessedLetters[7] = "";
 
 	std::cout << "----------------------Welcome to the HANGMAN!----------------------" << endl;
 	std::cout << "Your word has FIVE letters." << endl;
@@ -22,7 +22,7 @@ int main()
 	// Loop
 	while (true)
 	{
-		showSolved(wordToBeGuessed, correctlyGuessedLettters);
+		showSolved(correctlyGuessedLettters, incorrectlyGuessedLetters);
 
 		showGallows(strlen(incorrectlyGuessedLetters));
 
@@ -38,7 +38,7 @@ int main()
 		// Ran out of guesses
 		if (strlen(incorrectlyGuessedLetters) > 6)
 		{
-			std::cout << "\n\nYou ran out of guesses. The word was " << wordToBeGuessed << ".\n";
+			std::cout << "\n\nYou ran out of guesses. The word was '" << wordToBeGuessed << "'.\n";
 			break;
 		}
 	}

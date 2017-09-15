@@ -9,12 +9,12 @@
 
 // Attributes
 int badGuess = 0;
+char guess;
+char correctWord[] = "clout";
 
 // Draws ASCII art to the console depending on the number of guesses
 void showGallows(int guessLimit)
 {
-	guessLimit = badGuess;
-
 	// TODO: draw ASCII art properly if guess is wrong.
 	if (guessLimit == 0)
 	{
@@ -106,29 +106,40 @@ void showGallows(int guessLimit)
 // store proper guess letters and show the user which letters have been correctly guessed
 void showSolved(char word[], char guesses[])
 {
-	// TODO: store letters into proper char array
-
-	char guess;
+	// TODO: store letters into proper char array		
 	std::cout << "\n\nGuess a letter: ";
 	std::cin >> guess;
 	std::cout << "Guess: " << guess << "\n\n";
 	
-	for (int i = 0; i < sizeof(word); i++) 
-	{
-		if (word[i] == guess && guesses[i] == guess) 
+	for (int i = 0; i < sizeof(correctWord); i++) 
+	{		
+		if (correctWord[i] == guess) 
 		{
-			std::cout << "Guess has already been made. Guess again.\n";
+			if (word[i] == guess)
+			{
+				std::cout << "Guess has already been made. Guess again.\n";
+			}
+
+			else
+			{
+				word[i] = guess;
+			}
+			break;
 		}
 
-		else if (word[i] == guess) 
+		if (i == (sizeof(correctWord) - 1) && correctWord[i] != guess)
 		{
-			guesses[i] = guess;
-		}
+			if (guesses[badGuess - 1] == guess)
+			{
+				std::cout << "Guess has already been made. Guess again.\n";
+			}
 
-		else
-		{
-			std::cout << guess << " is not in the word. Guess again.\n";
-			badGuess += 1;
+			else
+			{
+				guesses[badGuess] = guess;
+				std::cout << guess << " is not in the word. Guess again.\n";
+				badGuess += 1;
+			}			
 		}
 	}	
 }
