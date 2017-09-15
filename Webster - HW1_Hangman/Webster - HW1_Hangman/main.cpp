@@ -11,28 +11,39 @@ using namespace std;
 
 int main()
 {
+	// Attributes
 	char wordToBeGuessed[] = "clout";
 	char correctlyGuessedLettters[] = "_____";
 	char incorrectlyGuessedLetters[27] = "";
-	char guess;
 
-	std::cout << "----------------------Welcome to the HANGMAN!----------  ----------" << endl;
-	std::cout << "Your word has FIVE letters." << endl;	
+	std::cout << "----------------------Welcome to the HANGMAN!----------------------" << endl;
+	std::cout << "Your word has FIVE letters." << endl;
 
 	// Loop
 	while (true)
 	{
-		std::cout << "\n\nGuess a letter: ";
-		std::cin >> guess;
-		std::cout << "Guess: " << guess << "\n";
-
-		//showSolved(word, guesses);
-		// LAST PART needed to finish game
+		showSolved(wordToBeGuessed, correctlyGuessedLettters);
 
 		showGallows(strlen(incorrectlyGuessedLetters));
+
+		std::cout << "\nWord: " << correctlyGuessedLettters << "\n";
+
+		// Win
+		if (strcmp(wordToBeGuessed, correctlyGuessedLettters) == 0)
+		{
+			std::cout << "\n\nYou Win!\n";
+			break;
+		}
+
+		// Ran out of guesses
+		if (strlen(incorrectlyGuessedLetters) > 6)
+		{
+			std::cout << "\n\nYou ran out of guesses. The word was " << wordToBeGuessed << ".\n";
+			break;
+		}
 	}
 
-	std::cout << "\nPress any key to continue...";
+	// Exit Program
 	std::cin.ignore();
 	std::cin.get();
 	return 0;
