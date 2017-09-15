@@ -109,11 +109,10 @@ void showSolved(char word[], char guesses[])
 	// TODO: store letters into proper char array		
 	std::cout << "\n\nGuess a letter: ";
 	std::cin >> guess;
-	std::cout << "Guess: " << guess << "\n\n";
-	
-	for (int i = 0; i < sizeof(correctWord); i++) 
-	{		
-		if (correctWord[i] == guess) 
+
+	for (int i = 0; i < sizeof(correctWord); i++)
+	{
+		if (correctWord[i] == guess)
 		{
 			if (word[i] == guess)
 			{
@@ -129,7 +128,7 @@ void showSolved(char word[], char guesses[])
 
 		if (i == (sizeof(correctWord) - 1) && correctWord[i] != guess)
 		{
-			if (guesses[badGuess - 1] == guess)
+			if (guesses[badGuess] == guess || guesses[badGuess - 1] == guess || guesses[badGuess - 2] == guess || guesses[badGuess - 3] == guess || guesses[badGuess - 4] == guess || guesses[badGuess - 5] == guess)
 			{
 				std::cout << "Guess has already been made. Guess again.\n";
 			}
@@ -139,7 +138,7 @@ void showSolved(char word[], char guesses[])
 				guesses[badGuess] = guess;
 				std::cout << guess << " is not in the word. Guess again.\n";
 				badGuess += 1;
-			}			
+			}
 		}
-	}	
+	}
 }
