@@ -116,7 +116,7 @@ void showSolved(char word[], char guesses[])
 		{
 			if (word[i] == guess)
 			{
-				std::cout << "Guess has already been made. Guess again.\n";
+				std::cout << "\n'" << guess << "' guess has already been made. Guess again.\n";
 			}
 
 			else
@@ -130,13 +130,13 @@ void showSolved(char word[], char guesses[])
 		{
 			if (guesses[badGuess] == guess || guesses[badGuess - 1] == guess || guesses[badGuess - 2] == guess || guesses[badGuess - 3] == guess || guesses[badGuess - 4] == guess || guesses[badGuess - 5] == guess)
 			{
-				std::cout << "Guess has already been made. Guess again.\n";
+				std::cout << "\n'" << guess << "' guess has already been made. Guess again.\n";
 			}
 
 			else
 			{
 				guesses[badGuess] = guess;
-				std::cout << guess << " is not in the word. Guess again.\n";
+				std::cout << "\n" << guess << " is not in the word. Guess again.\n";
 				badGuess += 1;
 			}
 		}
