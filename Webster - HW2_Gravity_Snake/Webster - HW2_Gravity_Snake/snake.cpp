@@ -2,6 +2,7 @@
 // Gravity Snake
 // Professor Maier
 
+#include "stdafx.h"
 #include "snake.h"
 
 // Updates the physics world

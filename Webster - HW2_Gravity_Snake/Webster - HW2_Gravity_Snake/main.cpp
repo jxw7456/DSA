@@ -6,6 +6,8 @@
 #include "stdafx.h"
 #include "snake.h"
 #include <iostream>
+#include <crtdbg.h>
+#include <conio.h>
 
 // Introduce the game to the user with instructions as to the keys to press
 int main()
@@ -23,5 +25,6 @@ int main()
 
 	// BONUS
 	// Loop the game where you can do 10 targets instead of just twice.
+	_getch();
     return 0;
 }
