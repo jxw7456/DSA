@@ -5,6 +5,7 @@
 
 #include "stdafx.h"
 #include "snake.h"
+#include "Box2D\Box2D.h"
 #include <iostream>
 #include <crtdbg.h>
 #include <conio.h>
