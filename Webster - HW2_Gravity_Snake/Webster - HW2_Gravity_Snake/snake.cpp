@@ -4,6 +4,7 @@
 
 #include "stdafx.h"
 #include "snake.h"
+#include "Box2D\Box2D.h"
 
 // Updates the physics world
 // Shows the user which letters have been correctly guessed
