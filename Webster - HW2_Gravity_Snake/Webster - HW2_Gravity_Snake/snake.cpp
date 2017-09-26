@@ -11,15 +11,15 @@
 using namespace std;
 
 // Updates the physics world
-void update(b2World world)
+void update(b2World& world)
 {
 	world.Step(1.0f / 60.0f, 6, 2);
 }
 
 // Displays the position of the target and the player
-void display(b2Vec2 target, b2Vec2 snake)
+void display(const b2Vec2& target, const b2Vec2& snake)
 {
-	//std::cout << "Target: " << std::
+	std::cout << "Target: " << target.x << " " << target.y << "---> Snake: " << snake.x << " " << snake.y << endl;
 }
 
 // Reads the key presses and applies the forces to the player to move
@@ -56,7 +56,7 @@ void applyForces(b2Body* body)
 
 // Moves the target tot a new location
 // Location will be in the range of -5.0 -> 5.0 in X and -5.0 -> 5.0 in Y
-void moveTarget(b2Vec2 target, float& xPos, float& yPos)
+void moveTarget(b2Vec2& target, float xPos, float yPos)
 {
 	target.x = xPos;
 	target.y = yPos;
