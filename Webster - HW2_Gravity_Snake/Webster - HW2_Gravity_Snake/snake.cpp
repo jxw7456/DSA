@@ -27,30 +27,33 @@ void display(b2Vec2 target, b2Vec2 snake)
 // Does NOT move player directly
 void applyForces(b2Body* body)
 {
-	char input = _getch();
-
-	switch (input)
+	if (kbhit)
 	{
-	case 'w':
-		std::cout << "\n 'w' is pressed";
+		char input = _getch();
 
-		break;
+		switch (input)
+		{
+		case 'w':
+			std::cout << "\n 'w' is pressed";
+			body->ApplyForceToCenter(b2Vec2(0, 100), true);
+			break;
 
-	case 'a':
-		std::cout << "\n 'a' is pressed";
+		case 'a':
+			std::cout << "\n 'a' is pressed";
+			body->ApplyForceToCenter(b2Vec2(-100, 0), true);
+			break;
 
-		break;
+		case 's':
+			std::cout << "\n 's' is pressed";
+			body->ApplyForceToCenter(b2Vec2(0, -100), true);
+			break;
 
-	case 's':
-		std::cout << "\n 's' is pressed";
-
-		break;
-
-	case 'd':
-		std::cout << "\n 'd' is pressed";
-
-		break;
-	}
+		case 'd':
+			std::cout << "\n 'd' is pressed";
+			body->ApplyForceToCenter(b2Vec2(100, 0), true);
+			break;
+		}
+	}	
 }
 
 // Moves the target tot a new location
