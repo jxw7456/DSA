@@ -13,7 +13,7 @@ using namespace std;
 // Updates the physics world
 void update(b2World& world)
 {
-	world.Step(1.0f / 60.0f, 6, 2);
+	world.Step(1.0f / 10.0f, 6, 2);
 }
 
 // Displays the position of the target and the player
@@ -34,23 +34,23 @@ void applyForces(b2Body* body)
 		switch (input)
 		{
 		case 'w':
-			std::cout << "\n'w' is pressed";
-			body->ApplyForceToCenter(b2Vec2(0, 1), true);
+			std::cout << "\n'w' is pressed" << endl;
+			body->ApplyForceToCenter(b2Vec2(0, 100), true);
 			break;
 
 		case 'a':
-			std::cout << "\n'a' is pressed";
-			body->ApplyForceToCenter(b2Vec2(-1, 0), true);
+			std::cout << "\n'a' is pressed" << endl;
+			body->ApplyForceToCenter(b2Vec2(-100, 0), true);
 			break;
 
 		case 's':
-			std::cout << "\n's' is pressed";
-			body->ApplyForceToCenter(b2Vec2(0, -1), true);
+			std::cout << "\n's' is pressed" << endl;
+			body->ApplyForceToCenter(b2Vec2(0, -100), true);
 			break;
 
 		case 'd':
-			std::cout << "\n'd' is pressed";
-			body->ApplyForceToCenter(b2Vec2(1, 0), true);
+			std::cout << "\n'd' is pressed" << endl;
+			body->ApplyForceToCenter(b2Vec2(100, 0), true);
 			break;
 		}
 	}	

@@ -23,7 +23,7 @@ int main(int argc, char** argv)
 	B2_NOT_USED(argv);
 
 	std::cout << "Welcome to Gravity Snake!\n" << endl;
-	std::cout << "Press the WASD keys to move the snake towards the target.\nTwo target hits will win you the game.\n\n";
+	std::cout << "Press the 'WASD' keys to move the snake towards the target.\nTwo target hits will win you the game.\n\n";
 
 	//ORIGINAL CODE
 	// Create the physics world (b2world)
@@ -54,18 +54,22 @@ int main(int argc, char** argv)
 
 	// Create a while loop to keep running until the user hits ESC or you get the total number of targets
 	// The physics world will update the snake based on gravity and the other forces automatically
-	while (kbhit() != 'ESC' || targetNum < 2) {
+	while (kbhit() != 'esc' || targetNum < 10) {
 				
 		applyForces(snake);
 
 		update(world);
 
 		display(target, snake->GetPosition());
+		
+		if (snake->GetPosition().x > target.x || snake->GetPosition().y > target.y) {
 
-		/*if () {
+			std::cout << "Target Hit\n\n" << endl;
+
 			targetNum += 1;
 
-			if (timer.GetMilliseconds() < 1000) {
+			// Score system
+			if (timer.GetMilliseconds() < 100) {
 				score += 500;
 			}
 
@@ -74,16 +78,19 @@ int main(int argc, char** argv)
 				score += 100;
 			}
 
-			if (targetNum == 2) {
+			// Check target hits
+			if (targetNum == 10) {
 				std::cout << "You hit all of the targets!" << endl;
 				std::cout << "Final Score: " << score << "\n\n" << endl;
 				break;
 			}
 
 			else {
-				moveTarget(target, -4.0, 2.0);
+				double x = rand() % 11 + (-5);
+				double y = rand() % 11 + (-5);
+				moveTarget(target, x, y);
 			}
-		}*/
+		}
 	}
 
 	// BONUS
