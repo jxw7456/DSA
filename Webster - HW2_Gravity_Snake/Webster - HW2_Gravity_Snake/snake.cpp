@@ -19,7 +19,7 @@ void update(b2World& world)
 // Displays the position of the target and the player
 void display(const b2Vec2& target, const b2Vec2& snake)
 {
-	std::cout << "Target: " << target.x << " " << target.y << "---> Snake: " << snake.x << " " << snake.y << endl;
+	std::cout << "Target: " << target.x << ", " << target.y << " ---> Snake: " << snake.x << ", " << snake.y << endl;
 }
 
 // Reads the key presses and applies the forces to the player to move
