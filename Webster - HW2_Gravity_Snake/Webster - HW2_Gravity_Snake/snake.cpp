@@ -26,6 +26,8 @@ void display(const b2Vec2& target, const b2Vec2& snake)
 // Does NOT move player directly
 void applyForces(b2Body* body)
 {
+	// Check if there is a keypress (kbhit)
+	// If there is a key press then call the applyForces function
 	if (kbhit)
 	{
 		char input = _getch();
@@ -33,22 +35,22 @@ void applyForces(b2Body* body)
 		{
 		case 'w':
 			std::cout << "\n'w' is pressed";
-			body->ApplyForceToCenter(b2Vec2(0, 100), true);
+			body->ApplyForceToCenter(b2Vec2(0, 1), true);
 			break;
 
 		case 'a':
 			std::cout << "\n'a' is pressed";
-			body->ApplyForceToCenter(b2Vec2(-100, 0), true);
+			body->ApplyForceToCenter(b2Vec2(-1, 0), true);
 			break;
 
 		case 's':
 			std::cout << "\n's' is pressed";
-			body->ApplyForceToCenter(b2Vec2(0, -100), true);
+			body->ApplyForceToCenter(b2Vec2(0, -1), true);
 			break;
 
 		case 'd':
 			std::cout << "\n'd' is pressed";
-			body->ApplyForceToCenter(b2Vec2(100, 0), true);
+			body->ApplyForceToCenter(b2Vec2(1, 0), true);
 			break;
 		}
 	}	

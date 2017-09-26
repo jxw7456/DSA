@@ -12,22 +12,24 @@
 #include <conio.h>
 using namespace std;
 
-int hits = 0;
+// Attributes
+int targetNum = 0;
+int score = 0;
 
 // Introduce the game to the user with instructions as to the keys to press
 int main(int argc, char** argv)
 {
-
 	B2_NOT_USED(argc);
 	B2_NOT_USED(argv);
 
 	std::cout << "Welcome to Gravity Snake!\n" << endl;
-	
+	std::cout << "Press the WASD keys to move the snake towards the target.\nTwo target hits will win you the game.\n\n";
+
 	//ORIGINAL CODE
 	// Create the physics world (b2world)
 	b2Vec2 gravity(0.0f, -10.f);	// define the gravity vector
 	b2World world(gravity);
-		
+
 	// Create your snake (physics body b2body)
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;	// responds to forces
@@ -44,21 +46,48 @@ int main(int argc, char** argv)
 
 	snake->CreateFixture(&fixtureDef);
 
-	// Create a while loop to keep running until the user hits ESC or you get the total number of targets
-	/*
-	while (kbhit() != 'ESC' || hits < 2) {
-		// Check if there is a keypress (kbhit)
-		// If there is a key press then call the applyForces function
-		if (kbhit() == pressed) {
-			applyForces();
-		}
-	}
-	*/	
+	// Target
+	b2Vec2 target(3.0f, -1.0f);
 
+	// Timer
+	b2Timer timer;
+
+	// Create a while loop to keep running until the user hits ESC or you get the total number of targets
 	// The physics world will update the snake based on gravity and the other forces automatically
+	while (kbhit() != 'ESC' || targetNum < 2) {
+				
+		applyForces(snake);
+
+		update(world);
+
+		display(target, snake->GetPosition());
+
+		/*if () {
+			targetNum += 1;
+
+			if (timer.GetMilliseconds() < 1000) {
+				score += 500;
+			}
+
+			else
+			{
+				score += 100;
+			}
+
+			if (targetNum == 2) {
+				std::cout << "You hit all of the targets!" << endl;
+				std::cout << "Final Score: " << score << "\n\n" << endl;
+				break;
+			}
+
+			else {
+				moveTarget(target, -4.0, 2.0);
+			}
+		}*/
+	}
 
 	// BONUS
 	// Loop the game where you can do 10 targets instead of just twice.
 	_getch();
-    return 0;
+	return 0;
 }
