@@ -89,6 +89,8 @@ int main(int argc, char** argv)
 
 		printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
 	}
+
+	//ORIGINAL CODE
 	/*
 	// Create the physics world (b2world)
 	b2Vec2 gravity(0.0f, -10.f);	// define the gravity vector
