@@ -43,19 +43,10 @@ int main(int argc, char** argv)
 	fixtureDef.friction = 0.3f;
 
 	snake->CreateFixture(&fixtureDef);
-	
-	// Prepare for simulation. Typically we use a time step of 1/60 of a
-	// second (60Hz) and 10 iterations. This provides a high quality simulation
-	// in most game scenarios.
-	float32 timeStep = 1.0f / 60.0f;
-	int32 velocityIterations = 6;
-	int32 positionIterations = 2;
 
 	// Create a while loop to keep running until the user hits ESC or you get the total number of targets
 	/*
 	while (kbhit() != 'ESC' || hits < 2) {
-		world.Step(timeStep, velocityIterations, positionIterations);
-
 		// Check if there is a keypress (kbhit)
 		// If there is a key press then call the applyForces function
 		if (kbhit() == pressed) {

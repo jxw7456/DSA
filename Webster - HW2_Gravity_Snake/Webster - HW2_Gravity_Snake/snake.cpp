@@ -11,16 +11,15 @@
 using namespace std;
 
 // Updates the physics world
-void update()
+void update(b2World world)
 {
-
+	world.Step(1.0f / 60.0f, 6, 2);
 }
 
 // Displays the position of the target and the player
 void display(b2Vec2 target, b2Vec2 snake)
 {
-	std::cout << "Target 'X' Position: " << target.x << " Target 'Y' Position: " << target.y << endl;
-	std::cout << "Player 'X' Position: " << snake.x << " Player 'Y' Position: " << snake.y << endl;
+	//std::cout << "Target: " << std::
 }
 
 // Reads the key presses and applies the forces to the player to move
@@ -30,26 +29,25 @@ void applyForces(b2Body* body)
 	if (kbhit)
 	{
 		char input = _getch();
-
 		switch (input)
 		{
 		case 'w':
-			std::cout << "\n 'w' is pressed";
+			std::cout << "\n'w' is pressed";
 			body->ApplyForceToCenter(b2Vec2(0, 100), true);
 			break;
 
 		case 'a':
-			std::cout << "\n 'a' is pressed";
+			std::cout << "\n'a' is pressed";
 			body->ApplyForceToCenter(b2Vec2(-100, 0), true);
 			break;
 
 		case 's':
-			std::cout << "\n 's' is pressed";
+			std::cout << "\n's' is pressed";
 			body->ApplyForceToCenter(b2Vec2(0, -100), true);
 			break;
 
 		case 'd':
-			std::cout << "\n 'd' is pressed";
+			std::cout << "\n'd' is pressed";
 			body->ApplyForceToCenter(b2Vec2(100, 0), true);
 			break;
 		}
@@ -58,7 +56,8 @@ void applyForces(b2Body* body)
 
 // Moves the target tot a new location
 // Location will be in the range of -5.0 -> 5.0 in X and -5.0 -> 5.0 in Y
-void moveTarget(float & xPos, float & yPos)
+void moveTarget(b2Vec2 target, float& xPos, float& yPos)
 {
-
+	target.x = xPos;
+	target.y = yPos;
 }
