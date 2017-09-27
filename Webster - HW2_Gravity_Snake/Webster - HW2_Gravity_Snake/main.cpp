@@ -62,7 +62,8 @@ int main(int argc, char** argv)
 
 		display(target, snake->GetPosition());
 		
-		if (snake->GetPosition().x > target.x || snake->GetPosition().y > target.y) {
+		if (snake->GetPosition().x > (target.x - 0.7) && snake->GetPosition().x < (target.x + 0.7) || snake->GetPosition().x == target.x)
+			if (snake->GetPosition().y >(target.y - 0.7) && snake->GetPosition().y < (target.y + 0.7) || snake->GetPosition().y == target.y) {
 
 			std::cout << "Target Hit\n\n" << endl;
 
@@ -93,8 +94,6 @@ int main(int argc, char** argv)
 		}
 	}
 
-	// BONUS
-	// Loop the game where you can do 10 targets instead of just twice.
 	_getch();
 	return 0;
 }
