@@ -22,10 +22,10 @@ int main(int argc, char** argv)
 	B2_NOT_USED(argc);
 	B2_NOT_USED(argv);
 
+	// Intro
 	std::cout << "Welcome to Gravity Snake!\n" << endl;
-	std::cout << "Press the 'WASD' keys to move the snake towards the target.\nTwo target hits will win you the game.\n\n";
+	std::cout << "Press the 'WASD' keys to move the snake towards the target.\nTen target hits will win you the game...\n\n";
 
-	//ORIGINAL CODE
 	// Create the physics world (b2world)
 	b2Vec2 gravity(0.0f, -10.f);	// define the gravity vector
 	b2World world(gravity);
@@ -62,6 +62,7 @@ int main(int argc, char** argv)
 
 		display(target, snake->GetPosition());
 		
+		// Check if snake is in range or is equal to the target
 		if (snake->GetPosition().x > (target.x - 0.7) && snake->GetPosition().x < (target.x + 0.7) || snake->GetPosition().x == target.x)
 			if (snake->GetPosition().y >(target.y - 0.7) && snake->GetPosition().y < (target.y + 0.7) || snake->GetPosition().y == target.y) {
 

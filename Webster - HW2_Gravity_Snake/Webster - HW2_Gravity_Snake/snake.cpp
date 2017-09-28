@@ -30,27 +30,30 @@ void applyForces(b2Body* body)
 	// If there is a key press then call the applyForces function
 	if (kbhit)
 	{
-		char input = _getch();
+		char input = _getch();		
 		switch (input)
 		{
 		case 'w':
-			std::cout << "\n'w' is pressed" << endl;
+			std::cout << "\n'W' is pressed" << endl;
 			body->ApplyForceToCenter(b2Vec2(0, 100), true);
 			break;
 
 		case 'a':
-			std::cout << "\n'a' is pressed" << endl;
+			std::cout << "\n'A' is pressed" << endl;
 			body->ApplyForceToCenter(b2Vec2(-100, 0), true);
 			break;
 
 		case 's':
-			std::cout << "\n's' is pressed" << endl;
+			std::cout << "\n'S' is pressed" << endl;
 			body->ApplyForceToCenter(b2Vec2(0, -100), true);
 			break;
 
 		case 'd':
-			std::cout << "\n'd' is pressed" << endl;
+			std::cout << "\n'D' is pressed" << endl;
 			body->ApplyForceToCenter(b2Vec2(100, 0), true);
+			break;
+		default:
+			std::cout << "\nDon't forget the gravity!" << endl;
 			break;
 		}
 	}	
