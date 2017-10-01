@@ -38,7 +38,18 @@ int getLengthArray(int intArray[]) {
 }
 
 int getLengthPointer(int *intPt) {
-	
+	int numEle = 0;
+	for (int i = 0; i < sizeof(intPt); i++) {
+		printf(i + "\n");
+
+		if (intPt[i] == -1) {
+			return numEle;
+		}
+
+		else {
+			numEle++;
+		}
+	}
 }
 
 int main()
@@ -53,7 +64,8 @@ int main()
 	changePointer((int*)number);
 
 	// Part 2
-	std::cout << "Results:\n" << getLengthArray(arrayPt) << " elements." << endl;
+	std::cout << "Results:\n" << getLengthArray(arrayPt) << " elements" << endl;
+	std::cout << "Results:\n" << getLengthPointer(arrayPt) << " elements" << endl;
 
 	// Part 3
 
