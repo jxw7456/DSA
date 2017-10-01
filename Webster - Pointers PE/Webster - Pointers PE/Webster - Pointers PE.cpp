@@ -99,12 +99,19 @@ int main()
 	std::cout << "Stack Array:\n" << stackPt << "\n" << endl;
 	std::cout << "Heap Array:\n" << heapPt1 << "\n" << heapPt2 << "\n" << heapPt3 << "\n" << heapPt4 << "\n" << heapPt5 << endl;
 
-	delete []stackPt;
-	//delete []heapPt5;
-	//delete []heapPt4;
-	//delete []heapPt3;
-	//delete []heapPt2;
-	//delete []heapPt1;
+	delete[] stackPt;
+	delete[] heapPt1;
+	delete[] heapPt2;
+	delete[] heapPt3;
+	delete[] heapPt4;
+	delete[] heapPt5;
+
+	stackPt = nullptr;
+	heapPt1 = nullptr;
+	heapPt2 = nullptr;
+	heapPt3 = nullptr;
+	heapPt4 = nullptr;
+	heapPt5 = nullptr;
 	
 	return 0;
 }
