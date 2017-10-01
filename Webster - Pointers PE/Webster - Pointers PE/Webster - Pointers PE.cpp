@@ -52,11 +52,32 @@ int getLengthPointer(int *intPt) {
 	}
 }
 
+int* createStackArray() {
+	int ptArray[5] = { 0, 1, 2, 3, 4 };
+	return ptArray;
+}
+
+int* createHeapArray(int sizeOfArray) {
+	int *ptArray = new int[sizeOfArray];
+	ptArray[0] = 0;
+	ptArray[1] = 1;
+	ptArray[2] = 2;
+	ptArray[3] = 3;
+	ptArray[4] = 4;
+	return ptArray;
+}
+
 int main()
 {
 	int number = 21;
 	int numArray[7] = {5, 4, 3, 2, 1, 0, -1};
 	int *arrayPt = numArray;
+	int *stackPt;
+	int *heapPt1;
+	int *heapPt2;
+	int *heapPt3;
+	int *heapPt4;
+	int *heapPt5;
 
 	// Part 1
 	std::cout << "Variable value is currently: " << number << endl;
@@ -65,9 +86,25 @@ int main()
 
 	// Part 2
 	std::cout << "Results:\n" << getLengthArray(arrayPt) << " elements" << endl;
-	std::cout << "Results:\n" << getLengthPointer(arrayPt) << " elements" << endl;
+	std::cout << "Results:\n" << getLengthPointer(arrayPt) << " elements\n" << endl;
 
 	// Part 3
+	stackPt = createStackArray();
+	heapPt1 = createHeapArray(0);
+	heapPt2 = createHeapArray(1);
+	heapPt3 = createHeapArray(2);
+	heapPt4 = createHeapArray(3);
+	heapPt5 = createHeapArray(4);
 
+	std::cout << "Stack Array:\n" << stackPt << "\n" << endl;
+	std::cout << "Heap Array:\n" << heapPt1 << "\n" << heapPt2 << "\n" << heapPt3 << "\n" << heapPt4 << "\n" << heapPt5 << endl;
+
+	delete []stackPt;
+	//delete []heapPt5;
+	//delete []heapPt4;
+	//delete []heapPt3;
+	//delete []heapPt2;
+	//delete []heapPt1;
+	
 	return 0;
 }
