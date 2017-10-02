@@ -86,14 +86,19 @@ int main()
 	stackPt = createStackArray();
 	heapPt = createHeapArray(5);
 
-	std::cout << "Stack Array:\n" << stackPt << "\n" << endl;
-	std::cout << "Heap Array:\n" << heapPt << endl;
+	std::cout << "Stack Array:\n" << stackPt[0] << "\n" << endl;
+	std::cout << "Heap Array:\n" << heapPt[0] << endl;
 
-	delete stackPt;
-	delete heapPt;
+	delete[] stackPt;
+	delete[] heapPt;
 
 	stackPt = nullptr;
 	heapPt = nullptr;
+
+	// The stack is saving the memory while in the method, but once you leave the method the variables
+	// are dumped since the stack only uses them temperarily. This is why the code crashes because there
+	// is nothing in the location anymore. The heap on the other hand holds on to the reference
+	// of the array until the user deletes it themselves.
 	
 	return 0;
 }
