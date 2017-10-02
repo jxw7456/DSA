@@ -89,8 +89,8 @@ int main()
 	std::cout << "Stack Array:\n" << stackPt << "\n" << endl;
 	std::cout << "Heap Array:\n" << heapPt << endl;
 
-	delete[] stackPt;
-	delete[] heapPt;
+	delete stackPt;
+	delete heapPt;
 
 	stackPt = nullptr;
 	heapPt = nullptr;
