@@ -59,11 +59,9 @@ int* createStackArray() {
 
 int* createHeapArray(int sizeOfArray) {
 	int *ptArray = new int[sizeOfArray];
-	ptArray[0] = 0;
-	ptArray[1] = 1;
-	ptArray[2] = 2;
-	ptArray[3] = 3;
-	ptArray[4] = 4;
+	for (int i = 0; i < sizeOfArray; i++) {
+		ptArray[i] = i;
+	}
 	return ptArray;
 }
 
@@ -73,11 +71,7 @@ int main()
 	int numArray[7] = {5, 4, 3, 2, 1, 0, -1};
 	int *arrayPt = numArray;
 	int *stackPt;
-	int *heapPt1;
-	int *heapPt2;
-	int *heapPt3;
-	int *heapPt4;
-	int *heapPt5;
+	int *heapPt;
 
 	// Part 1
 	std::cout << "Variable value is currently: " << number << endl;
@@ -90,28 +84,16 @@ int main()
 
 	// Part 3
 	stackPt = createStackArray();
-	heapPt1 = createHeapArray(0);
-	heapPt2 = createHeapArray(1);
-	heapPt3 = createHeapArray(2);
-	heapPt4 = createHeapArray(3);
-	heapPt5 = createHeapArray(4);
+	heapPt = createHeapArray(5);
 
 	std::cout << "Stack Array:\n" << stackPt << "\n" << endl;
-	std::cout << "Heap Array:\n" << heapPt1 << "\n" << heapPt2 << "\n" << heapPt3 << "\n" << heapPt4 << "\n" << heapPt5 << endl;
+	std::cout << "Heap Array:\n" << heapPt << endl;
 
 	delete[] stackPt;
-	delete[] heapPt1;
-	delete[] heapPt2;
-	delete[] heapPt3;
-	delete[] heapPt4;
-	delete[] heapPt5;
+	delete[] heapPt;
 
 	stackPt = nullptr;
-	heapPt1 = nullptr;
-	heapPt2 = nullptr;
-	heapPt3 = nullptr;
-	heapPt4 = nullptr;
-	heapPt5 = nullptr;
+	heapPt = nullptr;
 	
 	return 0;
 }
