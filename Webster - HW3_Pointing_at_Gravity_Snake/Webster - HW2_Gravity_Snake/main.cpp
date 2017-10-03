@@ -14,12 +14,8 @@ using namespace std;
 
 // Attributes
 int targetNum = 0;
+int numStart = 0;
 int score = 0;
-double x = rand() % 11 + (-5); // random target x position
-double y = rand() % 11 + (-5); // random target y position
-b2Vec2 TargetLocations[];
-b2Vec2* currentLocation;
-typedef;
 
 // Introduce the game to the user with instructions as to the keys to press
 int main(int argc, char** argv)
@@ -55,7 +51,7 @@ int main(int argc, char** argv)
 	snake->CreateFixture(&fixtureDef);
 
 	// Target
-	b2Vec2 target(x, y);
+	b2Vec2 target((rand() % 11 + (-5)), (rand() % 11 + (-5)));
 
 	// Timer
 	b2Timer timer;
@@ -68,23 +64,20 @@ int main(int argc, char** argv)
 
 		update(world);
 
-		display(target, snake->GetPosition());
+		display(TargetLocations[numStart], snake->GetPosition());
 
 		// Check if snake is in range or is equal to the target
-		if (snake->GetPosition().x > (target.x - 0.7) && snake->GetPosition().x < (target.x + 0.7) || snake->GetPosition().x == target.x)
-			if (snake->GetPosition().y > (target.y - 0.7) && snake->GetPosition().y < (target.y + 0.7) || snake->GetPosition().y == target.y) {
+		if (snake->GetPosition().x > (TargetLocations[numStart].x - 0.7) && snake->GetPosition().x < (TargetLocations[numStart].x + 0.7) || snake->GetPosition().x == TargetLocations[numStart].x)
+			if (snake->GetPosition().y > (TargetLocations[numStart].y - 0.7) && snake->GetPosition().y < (TargetLocations[numStart].y + 0.7) || snake->GetPosition().y == TargetLocations[numStart].y) {
 
 				std::cout << "Target Hit\n\n" << endl;
-
-				targetNum -= 1;
 
 				// Score system
 				if (timer.GetMilliseconds() < 100) {
 					score += 500;
 				}
 
-				else
-				{
+				else {
 					score += 100;
 				}
 
@@ -96,7 +89,7 @@ int main(int argc, char** argv)
 				}
 
 				else {
-					moveTarget(target, x, y);
+					numStart += 1;
 				}
 			}
 	}

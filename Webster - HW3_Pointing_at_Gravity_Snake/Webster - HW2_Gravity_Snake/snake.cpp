@@ -30,7 +30,7 @@ void applyForces(b2Body* body)
 	// If there is a key press then call the applyForces function
 	if (kbhit)
 	{
-		char input = _getch();		
+		char input = _getch();
 		switch (input)
 		{
 		case 'w':
@@ -56,7 +56,7 @@ void applyForces(b2Body* body)
 			std::cout << "\nDon't forget the gravity!" << endl;
 			break;
 		}
-	}	
+	}
 }
 
 // Moves the target tot a new location
@@ -149,7 +149,7 @@ void ReverseGravity(b2World& world)
 
 // Prompt user for number of targets to use in game
 void setupTargets(int cnt)
-{	
+{
 	while (cnt < 1 || cnt > 10) {
 		std::cout << "How many targets do you want in the game: ";
 		std::cin >> cnt;
@@ -163,14 +163,20 @@ void setupTargets(int cnt)
 			std::cout << "Invalid input.\n";
 		}
 	}
-	
-	//b2Vec2 positions[]
+
+	TargetLocations = new b2Vec2[cnt + 1];
+	for (int i = 0; i < sizeof(TargetLocations); i++) {
+		TargetLocations[i] = b2Vec2((rand() % 11 + (-5)), (rand() % 11 + (-5)));
+	}
+
+	TargetLocations[cnt + 1] = b2Vec2(-1000, -1000);
 }
 
 // Returns if there are more targets are not
 bool selectNextTraget(int cnt)
 {
 	if (cnt > 0) {
+		cnt -= 1;
 		return true;
 	}
 

@@ -5,6 +5,10 @@
 #pragma once
 #include "Box2D\Box2D.h"
 
+b2Vec2* TargetLocations;
+b2Vec2* currentLocation;
+typedef;
+
 void update(b2World& world);
 
 void display(const b2Vec2& target, const b2Vec2& snake);
