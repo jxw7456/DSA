@@ -15,7 +15,9 @@ using namespace std;
 // Attributes
 int targetNum = 0;
 int score = 0;
-b2Vec2 TargetLocations;
+double x = rand() % 11 + (-5); // random target x position
+double y = rand() % 11 + (-5); // random target y position
+b2Vec2 TargetLocations[];
 b2Vec2* currentLocation;
 typedef;
 
@@ -27,7 +29,10 @@ int main(int argc, char** argv)
 
 	// Intro
 	std::cout << "Welcome to Gravity Snake!\n" << endl;
-	std::cout << "Press the 'WASD' keys to move the snake towards the target.\nTen target hits will win you the game...\n\n";
+
+	setupTargets(targetNum);
+
+	std::cout << "Press the 'WASD' keys to move the snake towards the target.\n\n";
 
 	// Create the physics world (b2world)
 	b2Vec2 gravity(0.0f, -10.f);	// define the gravity vector
@@ -50,52 +55,50 @@ int main(int argc, char** argv)
 	snake->CreateFixture(&fixtureDef);
 
 	// Target
-	b2Vec2 target(3.0f, -1.0f);
+	b2Vec2 target(x, y);
 
 	// Timer
 	b2Timer timer;
 
 	// Create a while loop to keep running until the user hits ESC or you get the total number of targets
 	// The physics world will update the snake based on gravity and the other forces automatically
-	while (kbhit() != 'esc' || targetNum < 10) {
-				
-		applyForces(snake);
+	while (kbhit() != 'esc' || targetNum > 0) {
+
+		processInput(snake, world);
 
 		update(world);
 
 		display(target, snake->GetPosition());
-		
+
 		// Check if snake is in range or is equal to the target
 		if (snake->GetPosition().x > (target.x - 0.7) && snake->GetPosition().x < (target.x + 0.7) || snake->GetPosition().x == target.x)
-			if (snake->GetPosition().y >(target.y - 0.7) && snake->GetPosition().y < (target.y + 0.7) || snake->GetPosition().y == target.y) {
+			if (snake->GetPosition().y > (target.y - 0.7) && snake->GetPosition().y < (target.y + 0.7) || snake->GetPosition().y == target.y) {
 
-			std::cout << "Target Hit\n\n" << endl;
+				std::cout << "Target Hit\n\n" << endl;
 
-			targetNum += 1;
+				targetNum -= 1;
 
-			// Score system
-			if (timer.GetMilliseconds() < 100) {
-				score += 500;
+				// Score system
+				if (timer.GetMilliseconds() < 100) {
+					score += 500;
+				}
+
+				else
+				{
+					score += 100;
+				}
+
+				// Check target hits
+				if (selectNextTraget(targetNum) == false) {
+					std::cout << "You hit all of the targets!" << endl;
+					std::cout << "Final Score: " << score << "\n\n" << endl;
+					break;
+				}
+
+				else {
+					moveTarget(target, x, y);
+				}
 			}
-
-			else
-			{
-				score += 100;
-			}
-
-			// Check target hits
-			if (targetNum == 10) {
-				std::cout << "You hit all of the targets!" << endl;
-				std::cout << "Final Score: " << score << "\n\n" << endl;
-				break;
-			}
-
-			else {
-				double x = rand() % 11 + (-5);
-				double y = rand() % 11 + (-5);
-				moveTarget(target, x, y);
-			}
-		}
 	}
 
 	_getch();

@@ -67,8 +67,48 @@ void moveTarget(b2Vec2& target, float xPos, float yPos)
 	target.y = yPos;
 }
 
-void processInput()
+// set a function pointer to be used for the forces and then at the end of the function just call that function pointer
+void processInput(b2Body* player, b2World& world)
 {
+	// Check if there is a keypress (kbhit)
+	// If there is a key press then call the applyForces functions
+	if (kbhit)
+	{
+		char input = _getch();
+		switch (input)
+		{
+		case 'w':
+			std::cout << "\n'W' is pressed. UP" << endl;
+			ApplyForceUp(*player);
+			break;
+
+		case 'a':
+			std::cout << "\n'A' is pressed. LEFT" << endl;
+			ApplyForceLeft(*player);
+			break;
+
+		case 's':
+			std::cout << "\n'S' is pressed. DOWN" << endl;
+			ApplyForceDown(*player);
+			break;
+
+		case 'd':
+			std::cout << "\n'D' is pressed. RIGHT" << endl;
+			ApplyForceRight(*player);
+			break;
+		case 'x':
+			std::cout << "\n'X' is pressed. Stop right there!" << endl;
+			StopMoving(*player);
+			break;
+		case 'r':
+			std::cout << "\n'R' is pressed. Reverse!" << endl;
+			ReverseGravity(world);
+			break;
+		default:
+			std::cout << "\nDon't forget the gravity!" << endl;
+			break;
+		}
+	}
 }
 
 // Move Player Up 'W'
@@ -95,22 +135,35 @@ void ApplyForceRight(b2Body& player)
 	player.ApplyForceToCenter(b2Vec2(100, 0), true);
 }
 
-
+// Stop snake from moving
 void StopMoving(b2Body& player)
 {
 	player.SetLinearVelocity(b2Vec2(0, 0));
 }
 
+// Reverse the gravity
 void ReverseGravity(b2World& world)
 {
-	world.SetGravity(b2Vec2(0, 1));
+	world.SetGravity(b2Vec2((world.GetGravity().x * -1), (world.GetGravity().y * -1)));
 }
 
+// Prompt user for number of targets to use in game
 void setupTargets(int cnt)
-{
+{	
+
+	std::cout << "How many targets do you want in the game: ";
+	std::cin >> cnt;
+	std::cout << "You have " << cnt << " targets total.\n\n";
 }
 
-bool selectNextTraget()
+// Returns if there are more targets are not
+bool selectNextTraget(int cnt)
 {
-	return false;
+	if (cnt > 0) {
+		return true;
+	}
+
+	else {
+		return false;
+	}
 }

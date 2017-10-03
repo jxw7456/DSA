@@ -13,7 +13,7 @@ void applyForces(b2Body* body);
 
 void moveTarget(b2Vec2& target, float xPos, float yPos);
 
-void processInput();
+void processInput(b2Body* player, b2World& world);
 
 void ApplyForceUp(b2Body& player);
 
@@ -29,4 +29,4 @@ void ReverseGravity(b2World& world);
 
 void setupTargets(int cnt);
 
-bool selectNextTraget();
+bool selectNextTraget(int cnt);
