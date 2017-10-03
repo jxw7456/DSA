@@ -150,10 +150,21 @@ void ReverseGravity(b2World& world)
 // Prompt user for number of targets to use in game
 void setupTargets(int cnt)
 {	
+	while (cnt < 1 || cnt > 10) {
+		std::cout << "How many targets do you want in the game: ";
+		std::cin >> cnt;
 
-	std::cout << "How many targets do you want in the game: ";
-	std::cin >> cnt;
-	std::cout << "You have " << cnt << " targets total.\n\n";
+		if (cnt >= 1 && cnt <= 10) {
+			std::cout << "You have " << cnt << " targets total.\n\n";
+			break;
+		}
+
+		else {
+			std::cout << "Invalid input.\n";
+		}
+	}
+	
+	//b2Vec2 positions[]
 }
 
 // Returns if there are more targets are not
