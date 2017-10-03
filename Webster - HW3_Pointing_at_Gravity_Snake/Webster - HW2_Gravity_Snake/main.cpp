@@ -1,6 +1,6 @@
 // Webster - HW3_Pointing_at_Gravity_Snake.cpp : Defines the entry point for the console application.
 // JaJuan Webster
-// Gravity Snake
+// Pointing at Gravity Snake 
 // Professor Maier
 
 #include "stdafx.h"

@@ -1,5 +1,5 @@
 // JaJuan Webster
-// Gravity Snake
+// Pointing at Gravity Snake 
 // Professor Maier
 
 #pragma once
