@@ -9,6 +9,11 @@
 #include <string>
 #include <conio.h>
 using namespace std;
+extern b2Vec2* TargetLocations;
+extern b2Vec2* currentLocation;
+extern int targetNum;
+extern int numStart;
+typedef;
 
 // Updates the physics world
 void update(b2World& world)
@@ -160,27 +165,28 @@ void setupTargets(int cnt)
 		}
 
 		else {
-			std::cout << "Invalid input.\n";
+			std::cout << "Invalid input.\n" << endl;
 		}
 	}
 
 	TargetLocations = new b2Vec2[cnt + 1];
-	for (int i = 0; i < sizeof(TargetLocations); i++) {
-		TargetLocations[i] = b2Vec2((rand() % 11 + (-5)), (rand() % 11 + (-5)));
+	for (int i = 0; i < cnt; i++) {
+		double x = ((rand() % 11) + (-5));
+		double y = ((rand() % 11) + (-5));
+		TargetLocations[i] = b2Vec2(x, y);
 	}
 
 	TargetLocations[cnt + 1] = b2Vec2(-1000, -1000);
 }
 
-// Returns if there are more targets are not
-bool selectNextTraget(int cnt)
+// Returns if there are no more targets are not
+bool selectNextTarget()
 {
-	if (cnt > 0) {
-		cnt -= 1;
-		return true;
+	if (*currentLocation == b2Vec2(-1000, -1000)) {
+		return false;
 	}
 
 	else {
-		return false;
+		return true;
 	}
 }
