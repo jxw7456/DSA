@@ -60,6 +60,7 @@ int main(int argc, char** argv)
 	// Create a while loop to keep running until the user hits ESC or you get the total number of targets
 	// The physics world will update the snake based on gravity and the other forces automatically
 	currentLocation = &TargetLocations[numStart];
+
 	while (kbhit() != 'esc' || targetNum > 0) {
 
 		processInput(snake, world);

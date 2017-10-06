@@ -170,6 +170,7 @@ void setupTargets(int cnt)
 	}
 
 	TargetLocations = new b2Vec2[cnt + 1];
+
 	for (int i = 0; i < cnt; i++) {
 		double x = ((rand() % 11) + (-5));
 		double y = ((rand() % 11) + (-5));
@@ -182,7 +183,7 @@ void setupTargets(int cnt)
 // Returns if there are no more targets are not
 bool selectNextTarget()
 {
-	if (*currentLocation == b2Vec2(-1000, -1000)) {
+	if (*currentLocation == TargetLocations[targetNum + 1]) {
 		return false;
 	}
 
