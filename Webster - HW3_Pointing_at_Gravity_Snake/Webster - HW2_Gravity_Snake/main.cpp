@@ -84,6 +84,8 @@ int main(int argc, char** argv)
 					score += 100;
 				}
 
+				currentLocation++;
+
 				// Check target hits
 				if (selectNextTarget() == false) {
 					std::cout << "You hit all of the targets!" << endl;
@@ -92,7 +94,7 @@ int main(int argc, char** argv)
 				}
 
 				else {
-					currentLocation++;
+
 				}
 			}
 	}

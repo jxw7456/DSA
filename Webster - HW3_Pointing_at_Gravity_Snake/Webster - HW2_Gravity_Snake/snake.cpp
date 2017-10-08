@@ -11,8 +11,6 @@
 using namespace std;
 extern b2Vec2* TargetLocations;
 extern b2Vec2* currentLocation;
-extern int targetNum;
-extern int numStart;
 typedef;
 
 // Updates the physics world
@@ -169,21 +167,24 @@ void setupTargets(int cnt)
 		}
 	}
 
-	TargetLocations = new b2Vec2[cnt + 1];
+	TargetLocations = new b2Vec2[cnt];
+	double x;
+	double y;
 
 	for (int i = 0; i < cnt; i++) {
-		double x = ((rand() % 11) + (-5));
-		double y = ((rand() % 11) + (-5));
+		x = ((rand() % 11) + (-5));
+		y = ((rand() % 11) + (-5));
 		TargetLocations[i] = b2Vec2(x, y);
 	}
 
-	TargetLocations[cnt + 1] = b2Vec2(-1000, -1000);
+	TargetLocations[cnt] = b2Vec2(-1000, -1000);
 }
 
 // Returns if there are no more targets are not
 bool selectNextTarget()
 {
-	if (*currentLocation == TargetLocations[targetNum + 1]) {
+	TargetLocations[sizeof(TargetLocations)] = b2Vec2(-1000, -1000);
+	if (*currentLocation == TargetLocations[sizeof(TargetLocations)]) {
 		return false;
 	}
 
