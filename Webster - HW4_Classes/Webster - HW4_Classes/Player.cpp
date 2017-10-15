@@ -14,10 +14,10 @@ Player::Player()
 
 Player::Player(char * playerName, int strength, int dexterity, int finesse)
 {
-	playerName = playerName;
-	strength = strength;
-	dexterity = dexterity;
-	finesse = finesse;
+	this->playerName = playerName;
+	this->strength = strength;
+	this->dexterity = dexterity;
+	this->finesse = finesse;
 }
 
 Player::~Player()

@@ -20,10 +20,10 @@ int main()
 	player.printPlayer();
 	//paraPlayer.printPlayer();
 	heapDefault->printPlayer();
-	//heapPara->printPlayer();
+	heapPara->printPlayer();
 
 	delete heapDefault;
-	//delete heapPara;
+	delete heapPara;
     return 0;
 }
 
