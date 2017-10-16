@@ -22,6 +22,7 @@ Player::Player(char * playerName, int strength, int dexterity, int finesse)
 
 Player::~Player()
 {
+	std::cout << "Destroying player object" << endl;
 }
 
 void Player::printPlayer()
@@ -30,4 +31,14 @@ void Player::printPlayer()
 	std::cout << "Strength: " << strength << endl;
 	std::cout << "Dexterity: " << dexterity << endl;
 	std::cout << "Finesse: " << finesse << "\n" << endl;
+}
+
+char* Player::getName()
+{
+	return playerName;
+}
+
+void Player::attack(Player* player)
+{
+	std::cout << playerName << " attacks " << player;
 }

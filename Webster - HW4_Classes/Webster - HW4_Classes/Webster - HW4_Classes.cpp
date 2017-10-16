@@ -16,6 +16,7 @@ Player* heapDefault = new Player();
 Player* heapPara = new Player("Unknown", 10, 10, 10);
 Fighter fighter = Fighter();
 Fighter paraFighter = Fighter("Unknown", "Duel Swords", 10, 10, 10);
+Player* battlers[10];
 
 int main()
 {
@@ -32,7 +33,28 @@ int main()
 	fighter.printFighter();
 	paraFighter.printFighter();
 
-	// PART 3: VIRTUAL METHODS AND DESTRUCTORS
+	// PART 3: VIRTUAL METHODS AND DESTRUCTORS	
+	std::cout << "\n\nThis is The Battle of The Unknowns! Let the best fighter win!\n" << endl;
+	for (int i = 0; i < sizeof(battlers); i++) {
+		int num = rand() % 2;
+		if (num == 0) {
+			Player player = Player();
+		}
 
+		else if (num == 1) {
+			Fighter fighter = Fighter();
+		}
+	}
+
+	for (int i = 0; i < sizeof(battlers); i++) {
+		battlers[i]->attack(battlers[i + 1]);
+		delete battlers[i + 1];
+		battlers[i + 1] = nullptr;		
+
+		if (sizeof(battlers) == 1) {
+			std::cout << "\n\nWe have a winner! " << battlers[0] << " is our champion!" << endl;
+			break;
+		}
+	}
 	return 0;
 }
