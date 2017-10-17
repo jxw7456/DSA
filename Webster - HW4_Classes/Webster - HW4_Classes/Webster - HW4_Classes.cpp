@@ -50,7 +50,7 @@ int main()
 		}
 	}
 
-	for (int j = 0; j < 4; j++) {
+	for (int j = 0; j < 3; j++) {
 		for (int i = 0; i < sizeof(battlers) / sizeof(Player*); i++) {
 			if (battlers[i] == NULL) {
 				continue;
@@ -64,12 +64,12 @@ int main()
 			battlers[i]->attack(battlers[i + offset]);
 			delete battlers[i + offset];
 			battlers[i + offset] = nullptr;
-			defeated++;						
-		}
-		if (defeated == MAX_NUM) {
-				std::cout << "\n\nWe have a winner! " << battlers[0] << " is our champion!" << endl;
+			defeated++;
+			if (defeated == MAX_NUM) {
+				std::cout << "\n\nWe have a winner! " << battlers[i] << " is our champion!" << endl;
 				break;
 			}
+		}
 	}
 	return 0;
 }

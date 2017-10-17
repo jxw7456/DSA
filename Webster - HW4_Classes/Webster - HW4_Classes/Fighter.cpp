@@ -17,7 +17,7 @@ Fighter::Fighter(char * playerName, char* weaponSkill, int strength, int dexteri
 
 Fighter::~Fighter()
 {
-	std::cout << "Destroying fighter object" << endl;
+	std::cout << "Destroying fighter object\n" << endl;
 }
 
 void Fighter::printFighter()
@@ -28,5 +28,5 @@ void Fighter::printFighter()
 
 void Fighter::attack(Player* player)
 {
-	std::cout << " with a weapon!" << endl;
+	std::cout << "Fighter hits " << player->getName() << " with a weapon!" << endl;
 }

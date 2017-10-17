@@ -22,7 +22,7 @@ Player::Player(char * playerName, int strength, int dexterity, int finesse)
 
 Player::~Player()
 {
-	std::cout << "Destroying player object" << endl;
+	std::cout << "Destroying player object\n" << endl;
 }
 
 void Player::printPlayer()
@@ -40,5 +40,5 @@ char* Player::getName()
 
 void Player::attack(Player* player)
 {
-	std::cout << playerName << " attacks " << player;
+	std::cout << playerName << " attacks " << player << endl;
 }
