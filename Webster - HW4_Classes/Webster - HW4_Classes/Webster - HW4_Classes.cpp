@@ -10,6 +10,8 @@
 using namespace std;
 
 // Variables
+int defeated = 0;
+const int MAX_NUM = 9;
 Player player = Player();
 Player paraPlayer = Player("Unknown", 10, 10, 10);
 Player* heapDefault = new Player();
@@ -38,23 +40,36 @@ int main()
 	for (int i = 0; i < sizeof(battlers); i++) {
 		int num = rand() % 2;
 		if (num == 0) {
-			Player player = Player();
+			Player *player = new Player();
+			battlers[i] = player;
 		}
 
 		else if (num == 1) {
-			Fighter fighter = Fighter();
+			Fighter *fighter = new Fighter();
+			battlers[i] = fighter;
 		}
 	}
 
-	for (int i = 0; i < sizeof(battlers); i++) {
-		battlers[i]->attack(battlers[i + 1]);
-		delete battlers[i + 1];
-		battlers[i + 1] = nullptr;		
+	for (int j = 0; j < 4; j++) {
+		for (int i = 0; i < sizeof(battlers) / sizeof(Player*); i++) {
+			if (battlers[i] == NULL) {
+				continue;
+			}
 
-		if (sizeof(battlers) == 1) {
-			std::cout << "\n\nWe have a winner! " << battlers[0] << " is our champion!" << endl;
-			break;
+			int offset = 1;
+			while (battlers[i + offset] == NULL) {
+				offset++;
+			}
+
+			battlers[i]->attack(battlers[i + offset]);
+			delete battlers[i + offset];
+			battlers[i + offset] = nullptr;
+			defeated++;						
 		}
+		if (defeated == MAX_NUM) {
+				std::cout << "\n\nWe have a winner! " << battlers[0] << " is our champion!" << endl;
+				break;
+			}
 	}
 	return 0;
 }
