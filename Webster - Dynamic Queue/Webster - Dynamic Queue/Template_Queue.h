@@ -1,3 +1,6 @@
+// Homework 5
+// Professor Maier
+// Dynamic Queue
 #pragma once
 template <class dataType>
 class Template_Queue
