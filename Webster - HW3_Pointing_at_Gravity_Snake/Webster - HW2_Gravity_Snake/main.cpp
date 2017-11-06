@@ -13,6 +13,10 @@
 using namespace std;
 
 // Attributes
+b2Vec2* TargetLocations;
+b2Vec2* currentLocation;
+typedef;
+
 int targetNum = 0;
 int numStart = 0;
 int score = 0;
@@ -22,13 +26,6 @@ int main(int argc, char** argv)
 {
 	B2_NOT_USED(argc);
 	B2_NOT_USED(argv);
-
-	// Intro
-	std::cout << "Welcome to Gravity Snake!\n" << endl;
-
-	setupTargets(targetNum);
-
-	std::cout << "Press the 'WASD' keys to move the snake towards the target.\n\n";
 
 	// Create the physics world (b2world)
 	b2Vec2 gravity(0.0f, -10.f);	// define the gravity vector
@@ -50,22 +47,31 @@ int main(int argc, char** argv)
 
 	snake->CreateFixture(&fixtureDef);
 
+	// Intro
+	std::cout << "Welcome to Gravity Snake!\n" << endl;
+
+	setupTargets(targetNum);
+
+	std::cout << "Press the 'WASD' keys to move the snake towards the target.\n\n";
+
 	// Timer
 	b2Timer timer;
 
 	// Create a while loop to keep running until the user hits ESC or you get the total number of targets
 	// The physics world will update the snake based on gravity and the other forces automatically
+	currentLocation = &TargetLocations[numStart];
+
 	while (kbhit() != 'esc' || targetNum > 0) {
 
 		processInput(snake, world);
 
 		update(world);
 
-		display(TargetLocations[numStart], snake->GetPosition());
+		display(*currentLocation, snake->GetPosition());
 
 		// Check if snake is in range or is equal to the target
-		if (snake->GetPosition().x > (TargetLocations[numStart].x - 0.7) && snake->GetPosition().x < (TargetLocations[numStart].x + 0.7) || snake->GetPosition().x == TargetLocations[numStart].x)
-			if (snake->GetPosition().y > (TargetLocations[numStart].y - 0.7) && snake->GetPosition().y < (TargetLocations[numStart].y + 0.7) || snake->GetPosition().y == TargetLocations[numStart].y) {
+		if (snake->GetPosition().x > (currentLocation->x - 0.7) && snake->GetPosition().x < (currentLocation->x + 0.7) || snake->GetPosition().x == currentLocation->x)
+			if (snake->GetPosition().y > (currentLocation->y - 0.7) && snake->GetPosition().y < (currentLocation->y + 0.7) || snake->GetPosition().y == currentLocation->y) {
 
 				std::cout << "Target Hit\n\n" << endl;
 
@@ -78,15 +84,17 @@ int main(int argc, char** argv)
 					score += 100;
 				}
 
+				currentLocation++;
+
 				// Check target hits
-				if (selectNextTraget(targetNum) == false) {
+				if (selectNextTarget() == false) {
 					std::cout << "You hit all of the targets!" << endl;
 					std::cout << "Final Score: " << score << "\n\n" << endl;
 					break;
 				}
 
 				else {
-					numStart += 1;
+
 				}
 			}
 	}

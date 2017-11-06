@@ -86,14 +86,13 @@ int main()
 	stackPt = createStackArray();
 	heapPt = createHeapArray(5);
 
-	std::cout << "Stack Array:\n" << stackPt[0] << "\n" << endl;
-	std::cout << "Heap Array:\n" << heapPt[0] << endl;
+	//std::cout << "Stack Array:\n" << stackPt[0] << "\n" << endl;
+	for (int i = 0; i < sizeof(heapPt); i++) {
+		std::cout << "Heap Array:\n" << heapPt[i] << endl;
+	}
 
-	delete[] stackPt;
+	//delete[] stackPt;
 	delete[] heapPt;
-
-	stackPt = nullptr;
-	heapPt = nullptr;
 
 	// The stack is saving the memory while in the method, but once you leave the method the variables
 	// are dumped since the stack only uses them temperarily. This is why the code crashes because there
