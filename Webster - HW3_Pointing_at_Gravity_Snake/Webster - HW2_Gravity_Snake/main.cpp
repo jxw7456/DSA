@@ -50,9 +50,6 @@ int main(int argc, char** argv)
 
 	snake->CreateFixture(&fixtureDef);
 
-	// Target
-	b2Vec2 target((rand() % 11 + (-5)), (rand() % 11 + (-5)));
-
 	// Timer
 	b2Timer timer;
 
