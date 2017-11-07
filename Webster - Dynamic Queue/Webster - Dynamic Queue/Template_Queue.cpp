@@ -3,17 +3,22 @@
 // Dynamic Queue
 #include "stdafx.h"
 #include "Template_Queue.h"
+#include <iostream>
+using namespace std;
 
 // Constructor
 template<class dataType>
-Template_Queue::Template_Queue()
+Template_Queue<dataType>::Template_Queue(dataType type)
 {
+	this->type = type;
+	std::cout << "CONSTRUCTED\n" << endl;
 }
 
 // Deconstructor
 template<class dataType>
-Template_Queue::~Template_Queue()
+Template_Queue<dataType>::~Template_Queue()
 {
+	std::cout << "DESTROY!\n" << endl;
 }
 
 // a collection of pointers needed to define a constuctor that
@@ -39,6 +44,7 @@ void Template_Queue<dataType>::Pop()
 template<class dataType>
 void Template_Queue<dataType>::Print()
 {
+	std::cout << "Test: " << type << endl;
 }
 
 // returns an integer containing the amount of entries

@@ -32,10 +32,10 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Webster - Dynamic Queue.cpp">
+    <ClCompile Include="Template_Queue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Template_Queue.cpp">
+    <ClCompile Include="Webster - HW5_Dynamic Queue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
