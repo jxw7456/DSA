@@ -1,7 +1,7 @@
 // ConsoleApplication10.cpp : Defines the entry point for the console application.
 // JaJuan Webster
 // Pointer PE
-// Professor Maier
+// Professor Maier//
 
 #include "stdafx.h"
 #include <iostream>
